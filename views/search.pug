@@ -1,0 +1,13 @@
+extends layouts/main
+include mixins/videoBlock
+
+block content
+    .search__header
+        h3 Searching for : #{searchingBy}
+    .search__videos
+        each item in videos             /*videos는 videoController.js의 home에 전달한 videos와 이름이 같아야 한다. item으로 명명한 것은 뭘로짓던 상관이 없다.*/
+            +videoBlock({
+                title:item.title,
+                views:item.views,
+                videoFile:item.videoFile
+            })
